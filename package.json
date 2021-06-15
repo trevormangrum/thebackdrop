@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest",
+    "lint": "yarn lint:tsc ; yarn lint:eslint",
+    "lint:tsc": "tsc -p tsconfig.json --noEmit",
+    "lint:eslint": "eslint '**/*.{tsx,ts,js,jsx,json}' --fix"
   },
   "dependencies": {
     "eslint": "^7.28.0",
@@ -23,6 +27,16 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "typescript": "^4.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{tsx,ts,js,jsx,json}": [
+      "eslint --fix --plugin tsc --rule 'tsc/config: [2, {configFile: \"./tsconfig.json\"}]'"
+    ]
   },
   "devDependencies": {
     "@types/react": "^17.0.11"
