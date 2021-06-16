@@ -1,0 +1,33 @@
+@use 'variables' as vars;
+@use 'sass:color';
+
+@mixin text-primary {
+    color: map-get(vars.$colors, "primary");
+}
+
+@mixin text-dark {
+    color: map-get(vars.$colors, "dark");
+}
+
+@mixin text-light {
+    color: map-get(vars.$colors, "light");
+}
+
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin aligned-center {
+    align-items: center;
+    align-self:center;
+}
+
+@mixin justified-center {
+    justify-content: center;
+}
