@@ -13,6 +13,14 @@
     color: map-get(vars.$colors, "light");
 }
 
+@mixin font-body {
+    font-family: map-get(vars.$fonts, "body");
+}
+
+@mixin font-header {
+    font-family: map-get(vars.$fonts, "header");
+}
+
 @mixin flex-row {
     display: flex;
     flex-direction: row;
