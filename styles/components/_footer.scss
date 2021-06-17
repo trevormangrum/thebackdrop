@@ -1,0 +1,35 @@
+@use 'abstracts' as ab;
+
+.footer {
+  @include ab.flex-column;
+  width: 100%;
+  & > hr {
+    width: 80%;
+    align-self: center;
+  }
+}
+.footer-wrapper {
+  &:nth-child(3) {
+    margin-top: 40px;
+  }
+  width: 80%;
+  align-self: center;
+  flex-wrap: wrap;
+  @include ab.flex-row;
+}
+
+.footer-section {
+  @include ab.flex-column;
+  width: 400px;
+  & > div > span:nth-child(2) {
+    display: block;
+    margin-left: auto;
+  }
+  & > address {
+    @include ab.flex-column;
+    font-style: normal;
+    & > * {
+      margin: 5px 0;
+    }
+  }
+}

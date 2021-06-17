@@ -3,27 +3,33 @@
 @use 'pages';
 
 //Global styles for the site.
-html, body {
-    margin: 0;
-    padding: 0;
-    @include abstracts.font-body;
-    @include abstracts.text-dark;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  @include abstracts.font-body;
+  @include abstracts.text-dark;
 }
 
-h1, h2, h3, h4,h5, h6 {
-    @include abstracts.font-header;
-    letter-spacing: 2.5px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include abstracts.font-header;
+  letter-spacing: 2.5px;
 }
-p, span {
-    letter-spacing: 4px;
-    @include abstracts.font-body;
-    @include abstracts.text-light;
+p,
+span {
+  letter-spacing: 3.5px;
+  @include abstracts.font-body;
+  @include abstracts.text-light;
 }
 
 a {
-    letter-spacing: 4px;
-    @include abstracts.font-body;
-    @include abstracts.text-primary;
-    text-decoration:none;
+  letter-spacing: 3.5px;
+  @include abstracts.font-body;
+  @include abstracts.text-primary;
+  text-decoration: none;
 }
-
