@@ -12,13 +12,22 @@
 @mixin text-light {
     color: map-get(vars.$colors, "light");
 }
-
+@mixin bg-primary {
+    background-color: map-get(vars.$colors, "primary");
+}
+@mixin text-white {
+    color: white;
+}
 @mixin font-body {
     font-family: map-get(vars.$fonts, "body");
 }
 
 @mixin font-header {
     font-family: map-get(vars.$fonts, "header");
+}
+
+@mixin darken-bg($color) {
+    background: color.scale($color, $lightness: -30%);
 }
 
 @mixin flex-row {
