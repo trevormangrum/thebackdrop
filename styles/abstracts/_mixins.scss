@@ -21,6 +21,9 @@
 @mixin font-body {
     font-family: map-get(vars.$fonts, "body");
 }
+@mixin font-logo {
+    font-family: map-get(vars.$fonts, "logo");
+}
 
 @mixin font-header {
     font-family: map-get(vars.$fonts, "header");
@@ -47,4 +50,25 @@
 
 @mixin justified-center {
     justify-content: center;
+}
+
+//Breakpoint manager inspired by Sass Guidelines
+//https://sass-guidelin.es/#the-7-1-pattern
+//@param {String} $breakpoint - Breakpoint
+//@requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get(vars.$breakpoints, $breakpoint);
+  @if $raw-query {
+    $query: if(
+       type-of($raw-query) == "string",
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+    @media #{$query} {
+        @content;
+    }
+
+  } @else {
+    @error "No value found for `#{$breakpoint}`. ";
+  }
 }

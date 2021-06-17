@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
 $fonts: ( 
     header: #{'Libre Baskerville', serif},
-    body: #{'Raleway', sans-serif}
+    body: #{'Raleway', sans-serif},
+    logo:  #{'Niconne', cursive},
 );
 
 $colors: (
     primary: #884EE8,
     dark: #242424, //Dark gray
     light: #686868, //Light gray
+);
+
+$breakpoints: (
+    "medium": (min-width: 1000px),
 );
