@@ -3,11 +3,12 @@ import { NextPage } from "next";
 import Button from "src/components/Button";
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
+import InitialView from "src/components/InitialView";
 const HomePage: NextPage = () => {
   return (
     <div>
       <Header />
-      <Button href="/" text="view" />
+      <InitialView />
       <Footer />
     </div>
   );
