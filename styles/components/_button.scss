@@ -1,0 +1,18 @@
+@use 'abstracts' as ab;
+
+
+.button {
+    @include ab.bg-primary;
+    @include ab.text-white;
+    @include ab.flex-column;
+    @include ab.justified-center;
+    @include ab.aligned-center;
+    max-width: 200px;
+    padding: 1rem;
+    margin: 20px 0;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+    &:hover {
+        @include ab.darken-bg(map-get(ab.$colors, "primary"));
+    }
+}
