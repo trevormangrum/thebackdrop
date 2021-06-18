@@ -22,7 +22,7 @@ h6 {
 }
 p,
 span {
-  letter-spacing: 3.5px;
+  letter-spacing: 3px;
   @include abstracts.font-body;
   @include abstracts.text-light;
 }

@@ -1,0 +1,10 @@
+@use 'abstracts' as ab;
+.layout {
+    @include ab.flex-column;
+    min-height: 100vh;
+}
+.layout-wrapper {
+    @include ab.flex-column;
+    width: 80%;
+    align-self:center;
+}
