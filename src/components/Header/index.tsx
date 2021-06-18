@@ -1,10 +1,12 @@
 import React from "react";
 import Button from "src/components/Button";
+import useHasScrolledDown from "utils/scrolledDown";
 
 const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const hasScrolledDown = useHasScrolledDown();
   return (
-    <header className="navigation">
+    <header className={`navigation ${hasScrolledDown ? "with-bg": "" }`}>
       <div className="nav-wrapper">
         <a href="/" className="logo">
           The Backdrop

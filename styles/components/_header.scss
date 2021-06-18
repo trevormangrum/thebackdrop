@@ -6,7 +6,21 @@
   position: fixed;
   width: 100%;
   top: 0;
+  z-index: 10;
+  &.with-bg::before {
+    content: '';
+    //Thanks H4I Website: https://github.com/hack4impact/hack4impact-website/blob/main/components/shared/Nav/styles.module.scss
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; 
+    background: rgba(white, 0.3);
+    backdrop-filter: blur(8px);
+  }
 }
+
+
 .nav-wrapper {
   @include ab.flex-row;
   width: 80%;
@@ -20,6 +34,7 @@
   align-self: center;
   letter-spacing: 0;
   transition: 0.3s ease;
+  z-index: 11;
   &:hover {
     @include ab.text-primary;
   }
@@ -43,6 +58,7 @@
 }
 .navigation-links {
   position: absolute;
+  top: 0;
   @include ab.flex-column;
   width: 100%;
   height: 100vh;
@@ -51,6 +67,7 @@
   transition: 0.3s ease-in-out;
   //Desktop view
   @include ab.respond-to("medium") {
+    background: none;
     position: static;
     width: min-content;
     height: min-content;
@@ -84,8 +101,8 @@
   }
 }
 .mobile-open {
-  right: -100%;
+  right: 0;
 }
 .mobile-hidden {
-  right: 0;
+  right: -100%;
 }

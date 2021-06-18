@@ -1,0 +1,42 @@
+@use 'abstracts' as ab;
+.initial-view-overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1200px;
+    background: rgba(136, 78, 232, 0.20);
+    backdrop-filter: blur(5px);
+}
+.initial-view {
+    @include ab.flex-column;
+    @include ab.justified-center;
+    @include ab.aligned-center;
+    min-height: 1200px;
+    background: url('../../public/initview.jpg');
+    background-size: cover;
+    @include ab.respond-to('medium') {
+        background-size: 100% 1200px;
+    }
+}
+
+.initial-view-text {
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    @include ab.flex-column;
+    @include ab.aligned-center;
+    text-align:center;
+    & > h1 {
+        font-size: 30px;
+        margin: 10px 0;
+    }
+    & > p {
+        font-size: 20px; 
+        @include ab.text-dark;
+        margin: 0;
+    }
+    & > a {
+        width: 250px;
+        margin: 40px 0;
+    }
+}
