@@ -1,0 +1,35 @@
+@use 'abstracts' as ab;
+
+.polaroid {
+    @include ab.flex-column;
+    @include ab.aligned-center;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0px 0px 3px #e3e3e3;
+    @include ab.respond-to("medium") {
+        width: 600px;
+        height: 600px;
+    }
+    & > img {
+        margin-top: 10px;
+        width: 80%;
+        height: 80%;
+        @include ab.respond-to("medium") {
+            margin-top: 20px;
+            height: 80%;
+        }
+        background: #e3e3e3;
+    }
+}
+.tilt-right {
+    transform: rotate(0deg);
+    @include ab.respond-to("medium") {
+        transform: rotate(20deg);
+    }
+}
+.tilt-left{
+    transform: rotate(0deg);
+    @include ab.respond-to("medium") {
+        transform: rotate(-20deg);
+    }
+}

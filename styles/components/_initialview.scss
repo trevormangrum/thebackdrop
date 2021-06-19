@@ -12,6 +12,7 @@
     @include ab.justified-center;
     @include ab.aligned-center;
     min-height: 1200px;
+    width: 100%;
     background: url('../../public/initview.jpg');
     background-size: cover;
     @include ab.respond-to('medium') {
