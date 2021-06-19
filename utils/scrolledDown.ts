@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react';
+//Code comes directly from Hack4Impact website repo on Github.
+import { useState, useEffect } from "react";
 
 const useHasScrolledDown = () => {
   const [hasScrolledDown, setHasScrolledDown] = useState(false);
 
-  const onScroll = e => {
+  const onScroll = (e) => {
     setHasScrolledDown(e.target.documentElement.scrollTop > 0);
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   });
 
   return hasScrolledDown;

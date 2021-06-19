@@ -22,13 +22,13 @@ h6 {
 }
 p,
 span {
-  letter-spacing: 3px;
+  letter-spacing: 1.5px;
   @include abstracts.font-body;
   @include abstracts.text-light;
 }
 
 a {
-  letter-spacing: 3.5px;
+  letter-spacing: 1.5px;
   @include abstracts.font-body;
   @include abstracts.text-primary;
   text-decoration: none;
