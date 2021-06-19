@@ -6,7 +6,7 @@ const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const hasScrolledDown = useHasScrolledDown();
   return (
-    <header className={`navigation ${hasScrolledDown ? "with-bg": "" }`}>
+    <header className={`navigation ${hasScrolledDown ? "with-bg" : ""}`}>
       <div className="nav-wrapper">
         <a href="/" className="logo">
           The Backdrop
@@ -16,11 +16,11 @@ const Header: React.FC = () => {
             mobileOpen ? "mobile-open" : "mobile-hidden"
           }`}
         >
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-          <a href="#">Pricing</a>
-          <a href="#">Gallery</a>
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/faq">FAQs</a>
+          <a href="/gallery">Gallery</a>
           <Button href="/book" text="Book" />
         </nav>
         <div className="nav-button" onClick={() => setMobileOpen(!mobileOpen)}>
