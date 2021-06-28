@@ -11,3 +11,8 @@ export interface GalleryPhotoQueryResponse {
     items: GalleryPhoto[];
   };
 }
+
+export interface IDate {
+  date?: Date | null;
+  getDate: (value: Date) => void;
+}
