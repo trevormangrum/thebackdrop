@@ -1,4 +1,5 @@
 import React from "react";
+import constants from "utils/constants";
 
 const Footer: React.FC = () => {
   return (
@@ -21,15 +22,15 @@ const Footer: React.FC = () => {
           <h3>Hours.</h3>
           <div>
             <span>Thursday:</span>
-            <span>2:00PM-8:00PM</span>
+            <span>{constants.businessHours.thursday}</span>
           </div>
           <div>
             <span>Fri-Sat:</span>
-            <span>2:00PM-9:00PM</span>
+            <span>{constants.businessHours.saturday}</span>
           </div>
           <div>
             <span>Sunday:</span>
-            <span>1:00PM-5:00PM</span>
+            <span>{constants.businessHours.sunday}</span>
           </div>
         </div>
         <div className="footer-section">

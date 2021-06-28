@@ -12,7 +12,7 @@ export default function BookingPage() {
           will find the times available for the day.{" "}
         </p>
         <Calendar className="book-calendar" onChange={getDate} />
-        {date && <h3> Showing times for:</h3>}
+        {date && <h3> Showing times for: </h3>}
       </div>
     </Layout>
   );
