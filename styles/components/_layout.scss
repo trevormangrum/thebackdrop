@@ -7,6 +7,9 @@
   @include ab.flex-column;
   width: 80%;
   align-self: center;
+  &.booking {
+    min-height: 60vh;
+  }
 }
 
 .hero-spacer {
