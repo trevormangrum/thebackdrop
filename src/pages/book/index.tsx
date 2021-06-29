@@ -4,6 +4,8 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import useDate from "utils/useDate";
 import { IDate } from "utils/types";
+import BookableHour from "src/components/BookableHour";
+import { getBusinessHoursOnDay } from "server/actions/Mongo/Appointments";
 export default function BookingPage() {
 
 
@@ -15,6 +17,9 @@ export default function BookingPage() {
     getDate(value);
     setDisplayHourInfo(true);
     //Can use this function to display the pop up to pick a time
+    if(date) {
+      console.log(getBusinessHoursOnDay(date as Date));
+    }
   };
   return (
     <Layout hero={true} heroText="Book">
@@ -24,7 +29,10 @@ export default function BookingPage() {
           will find the times available for the day.{" "}
         </p>
         <Calendar className="book-calendar" onChange={onChange} />
-        {displayHourInfo && date && <h4>Showing times for {date.toDateString()}:</h4>}
+        {displayHourInfo && date && <h4>Showing times for {date instanceof Date && date.toDateString()}:</h4>}
+        {date && data && !isLoading && !error && (
+          <BookableHour date={date instanceof Date ? date as Date : undefined}/>
+        )}
       </div>
     </Layout>
   );

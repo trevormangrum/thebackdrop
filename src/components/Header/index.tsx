@@ -22,7 +22,7 @@ const Header: React.FC = () => {
           <a href="/faq">FAQs</a>
           <a href="/gallery">Gallery</a>
           <Button
-            href="https://squareupsandbox.com/appointments/buyer/widget/819tqe9eq1uurg/LR75TFJEFG020"
+            href="/book"
             text="Book"
           />
         </nav>

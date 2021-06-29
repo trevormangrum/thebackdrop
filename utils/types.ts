@@ -16,3 +16,13 @@ export interface IDate {
   date?: Date | null;
   getDate: (value: Date) => void;
 }
+
+export interface Appointment {
+  _id?: string;
+  groupName?: string;
+  day?: string;
+  time?: string;
+  groupSize?: number;
+  timeBooked?: Date;
+  paid?: boolean;
+}
