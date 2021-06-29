@@ -7,7 +7,7 @@ export const AppointmentSchema = new Schema({
         required: true,
     },
     day: {
-        type: String,
+        type: Date,
         required: true,
     },
     time: {

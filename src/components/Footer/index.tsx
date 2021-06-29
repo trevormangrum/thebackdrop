@@ -22,15 +22,15 @@ const Footer: React.FC = () => {
           <h3>Hours.</h3>
           <div>
             <span>Thursday:</span>
-            <span>{constants.businessHours.thursday.opening}-{ constants.businessHours.thursday.closing}</span>
+            <span>{constants.businessHours.thursday}</span>
           </div>
           <div>
             <span>Fri-Sat:</span>
-            <span>{constants.businessHours.saturday.opening}-{constants.businessHours.saturday.closing}</span>
+            <span>{constants.businessHours.saturday}</span>
           </div>
           <div>
             <span>Sunday:</span>
-            <span>{constants.businessHours.sunday.opening}-{constants.businessHours.sunday.closing}</span>
+            <span>{constants.businessHours.sunday}</span>
           </div>
         </div>
         <div className="footer-section">

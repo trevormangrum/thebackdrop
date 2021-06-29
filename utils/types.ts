@@ -18,11 +18,16 @@ export interface IDate {
 }
 
 export interface Appointment {
-  _id?: string;
   groupName?: string;
-  day?: string;
+  day?: Date;
   time?: string;
   groupSize?: number;
   timeBooked?: Date;
   paid?: boolean;
+}
+
+export interface BookableHour {
+  hourPair: string;
+  remainingGroupSize: number;
+  bookable: boolean;
 }
