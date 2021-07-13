@@ -5,9 +5,9 @@ interface Props {
   hero?: boolean;
   heroText?: string;
 }
-const Layout: React.FC<Props> = ({ children, hero, heroText }) => {
+const Layout: React.FC<Props> = ({ children, hero, heroText}) => {
   return (
-    <main className="layout">
+    <main className={`layout`}>
       <Header />
       {hero && heroText && (
         <header className="layout-wrapper hero-spacer">
