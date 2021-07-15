@@ -81,11 +81,18 @@ export const getBusinessHoursOnDay = (day: Date): string[] => {
   return getHourPairs(opening.hour, closing.hour);
 };
 
-export const deleteAppointment = (appointment: Appointment) => {
-  //TODO
+export const deleteAppointmentByID = async (id: string) => {
+  await mongoDB();
+  await AppointmentSchema.findByIdAndDelete(id);
+  console.log("Appointment successfully deleted.")
 };
 
-export const updateAppointmentPaymentById = (id: string) => {};
+export const updateAppointmentPaymentById = async (id: string) => {
+  await mongoDB();
+  const oldAppointment = {_id: id};
+  await AppointmentSchema.findOneAndUpdate(oldAppointment, {paid: true}, {upsert: false});
+  console.log("Appointment successfully updated.")
+};
 
 //From the MUSE: https://github.com/hack4impact-utk/muse-website/blob/develop/utils/helpers/hours.ts
 /**

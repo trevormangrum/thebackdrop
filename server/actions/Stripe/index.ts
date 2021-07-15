@@ -21,8 +21,8 @@ export const generateStripeCheckout = async (appointment: AppointmentDocument):P
             quantity: appointment.groupSize, //Quanity == number of people going
         }],
         mode: "payment",
-        success_url: `http://localhost:3000/success?id=${appointment._id}`,
-        cancel_url: `http://localhost:3000/cancel?id=${appointment._id}`,
+        success_url: `http://localhost:3000/api/checkout/payment?session_id={CHECKOUT_SESSION_ID}&app_id=${appointment._id}`,
+        cancel_url: `http://localhost:3000/api/checkout/payment?session_id={CHECKOUT_SESSION_ID}&app_id=${appointment._id}`,
     });
     return session.url as string;
 }

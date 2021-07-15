@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "src/components/Layout";
 import Button from "src/components/Button";
+import { GetServerSidePropsContext } from "next";
 export default function SuccessPage() {
     return (
         <Layout hero={true} heroText="Appointment Successfully Booked">
@@ -12,3 +13,4 @@ export default function SuccessPage() {
         </Layout>
     )
 }
+
