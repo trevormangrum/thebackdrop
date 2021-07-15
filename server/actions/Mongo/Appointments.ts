@@ -17,6 +17,12 @@ export const getBookableHoursOnDay = async (day: Date): Promise<BookableHour[]> 
     }
   }));
 };
+/**
+ * Gets the total number of people booked for a given day and hour pair. Can be used to verify whether or not an appointment is actually available.
+ * @param day The day of the appointment
+ * @param hourPair the hour pair of the appointment (ex: 2:00PM-3:00PM)
+ * @returns The total number of people that have booked in a given hour pair and day.
+ */
 export const getTotalPeopleInHours = async (
   day: Date,
   hourPair: string
@@ -40,8 +46,12 @@ export const getTotalPeopleInHours = async (
   return 0;
 };
 
-export const createAppointment = (appInfo: Appointment) => {
-  //TODO
+export const createAppointment = async (appointment: Appointment): Promise<AppointmentDocument> => {
+  console.log(appointment);
+  await mongoDB();
+  const createdApp = await AppointmentSchema.create(appointment);
+  console.log("appointment created");
+  return createdApp;
 };
 
 export const getBusinessHoursOnDay = (day: Date): string[] => {
@@ -72,10 +82,6 @@ export const getBusinessHoursOnDay = (day: Date): string[] => {
 };
 
 export const deleteAppointment = (appointment: Appointment) => {
-  //TODO
-};
-
-export const checkForAvailability = () => {
   //TODO
 };
 

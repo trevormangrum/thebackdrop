@@ -2,7 +2,7 @@
 import { Document, model, models, Model, Schema} from "mongoose";
 import { Appointment } from "utils/types";
 export const AppointmentSchema = new Schema({
-    groupName: {
+    phone: {
         type: String,
         required: true,
     },

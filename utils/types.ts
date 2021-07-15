@@ -1,3 +1,4 @@
+import {ObjectID} from "mongodb";
 export interface GalleryPhoto {
   photo: {
     url: string;
@@ -18,7 +19,7 @@ export interface IDate {
 }
 
 export interface Appointment {
-  groupName?: string;
+  phone?: string;
   day?: Date;
   time?: string;
   groupSize?: number;

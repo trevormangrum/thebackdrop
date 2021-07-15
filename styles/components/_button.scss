@@ -7,6 +7,8 @@
     @include ab.flex-column;
     @include ab.justified-center;
     @include ab.aligned-center;
+    border: none;
+    cursor:pointer;
     max-width: 200px;
     padding: 1rem;
     margin: 20px 0;
