@@ -70,7 +70,6 @@ export default function AdminLoginPage() {
       </div>
     </Layout>
   );
-
 }
 export async function getServerSideProps(context: NextPageContext) {
   //Code comes from mindversity website. https://github.com/hack4impact-utk/mindversity-website/blob/develop/pages/portal/index.tsx
@@ -90,8 +89,4 @@ export async function getServerSideProps(context: NextPageContext) {
     };
   }
   return { props: {} };
-
 }
-
-}
-
