@@ -1,0 +1,59 @@
+@use 'abstracts' as ab;
+.date-selector-container {
+    @include ab.flex-column;
+    align-items: center;
+    & > .react-calendar {
+        width: 100%;
+    }
+}
+
+.appointment-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-items: center;
+    margin-top: 20px;
+}
+.appointment-wrapper {
+    width: 80%;
+    height: 100%;
+    @include ab.flex-column;
+    align-self: center;
+    & > .appointment-info-container {
+        @include ab.flex-row;
+        margin: 10px 0;
+        width: 100%;
+        & > span {
+            margin-left: auto;
+        }
+        & > :not(span) {
+            color: map-get(ab.$colors, "primary");
+        }
+   }
+}
+.appointment-btn {
+    width: 100%;
+    padding: 1rem;
+    margin-top: auto;
+    cursor: pointer;
+    color:white;
+    border: none;
+    background: #b52b2b;
+    @include ab.font-body;
+    font-weight: bold;
+    transition: 0.3s ease;
+    &:hover {
+        @include ab.darken-bg(#b52b2b)
+    }
+    
+}
+.appointment-card {
+    @include ab.flex-column;
+    border-top: 3px solid map-get(ab.$colors, "primary");
+    width: 250px;
+    height: 250px;
+    margin: 20px 0;
+    box-shadow: 0px 0px 3px #e3e3e3;
+    & > .appointment-info-container:first-child {
+        background: red;
+    }
+}

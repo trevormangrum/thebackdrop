@@ -1,0 +1,74 @@
+@use 'variables' as vars;
+@use 'sass:color';
+
+@mixin text-primary {
+    color: map-get(vars.$colors, "primary");
+}
+
+@mixin text-dark {
+    color: map-get(vars.$colors, "dark");
+}
+
+@mixin text-light {
+    color: map-get(vars.$colors, "light");
+}
+@mixin bg-primary {
+    background-color: map-get(vars.$colors, "primary");
+}
+@mixin text-white {
+    color: white;
+}
+@mixin font-body {
+    font-family: map-get(vars.$fonts, "body");
+}
+@mixin font-logo {
+    font-family: map-get(vars.$fonts, "logo");
+}
+
+@mixin font-header {
+    font-family: map-get(vars.$fonts, "header");
+}
+
+@mixin darken-bg($color) {
+    background: color.scale($color, $lightness: -30%);
+}
+
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin aligned-center {
+    align-items: center;
+    align-self:center;
+}
+
+@mixin justified-center {
+    justify-content: center;
+}
+
+//Breakpoint manager inspired by Sass Guidelines
+//https://sass-guidelin.es/#the-7-1-pattern
+//@param {String} $breakpoint - Breakpoint
+//@requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get(vars.$breakpoints, $breakpoint);
+  @if $raw-query {
+    $query: if(
+       type-of($raw-query) == "string",
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+    @media #{$query} {
+        @content;
+    }
+
+  } @else {
+    @error "No value found for `#{$breakpoint}`. ";
+  }
+}

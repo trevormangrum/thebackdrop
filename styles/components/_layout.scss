@@ -1,0 +1,29 @@
+@use 'abstracts' as ab;
+.layout {
+  @include ab.flex-column;
+  min-height: 100vh;
+}
+.layout-wrapper {
+  @include ab.flex-column;
+  width: 80%;
+  align-self: center;
+  &.booking {
+    min-height: 60vh;
+  }
+}
+
+.hero-spacer {
+  margin-top: 100px;
+}
+.page-header {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 5px;
+    @include ab.bg-primary;
+  }
+}

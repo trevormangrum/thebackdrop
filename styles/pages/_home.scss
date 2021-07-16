@@ -1,0 +1,44 @@
+@use 'abstracts' as ab;
+
+.home-content {
+  display: flex;
+  flex-direction: column-reverse;
+  @include ab.justified-center;
+  min-height: 600px;
+  width: 100%;
+  text-align: left;
+  @include ab.respond-to("medium") {
+    @include ab.flex-row;
+    margin: 100px 0;
+  }
+  & > div {
+    @include ab.flex-column;
+    @include ab.respond-to("medium") {
+      width: 60%;
+      margin-right: auto;
+    }
+    & > a {
+      align-self: flex-start;
+    }
+  }
+  &.reverse {
+    display: flex;
+    flex-direction: column-reverse;
+    @include ab.respond-to("medium") {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+    & > div {
+      @include ab.flex-column;
+      @include ab.respond-to("medium") {
+        margin-right: 0;
+        margin-left: auto;
+      }
+      & > a {
+        @include ab.respond-to("medium") {
+          align-self: flex-end;
+        }
+      }
+    }
+  }
+}

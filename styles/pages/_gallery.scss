@@ -1,0 +1,123 @@
+@use 'abstracts' as ab;
+
+.gallery-grid {
+  display: grid;
+  width: 100%;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  @include ab.respond-to("medium") {
+    justify-items: left;
+  }
+}
+
+.gallery-photo {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+  box-shadow: 0px 0px 3px #eaeaea;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+.pages {
+  @include ab.flex-row;
+  @include ab.justified-center;
+  margin: 20px 0;
+  font-size: 24px;
+  & > a {
+    cursor: pointer;
+    @include ab.text-light;
+  }
+  & > a.active {
+    @include ab.text-primary;
+  }
+}
+.page-results {
+  text-align: left;
+  @include ab.respond-to("medium") {
+    text-align: right;
+  }
+}
+
+.gallery-photo-viewer {
+  display: none;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0px 3px #eaeaea;
+  &.visible {
+    @include ab.flex-column;
+    @include ab.justified-center;
+  }
+}
+
+.gallery-photo-viewer-content {
+  @include ab.flex-column;
+  width: max-content;
+  align-self: center;
+  position: relative;
+  background: white;
+  border-radius: 10px;
+  & > img {
+    object-fit: cover;
+    width: 350px;
+    height: 350px;
+    @include ab.respond-to("medium") {
+      width: 600px;
+      height: 600px;
+    }
+    object-fit: contain;
+  }
+  z-index: 21;
+  & > p {
+    width: 80%;
+    align-self: center;
+  }
+}
+
+.gallery-button-container {
+  @include ab.flex-row;
+  min-height: 60px;
+  justify-content: flex-end;
+  & > button {
+    margin: 20px 0;
+    background: none;
+    outline: none;
+    border: none;
+    @include ab.text-primary;
+    font-size: 24px;
+    @include ab.font-body;
+    cursor: pointer;
+  }
+}
+
+//Modified version of photo viewer specifically for appointment booking.
+.gallery-text-viewer-content {
+  @include ab.flex-column;
+  width: 350px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px #e3e3e3;
+  align-self:center;
+  height: 500px;
+  & > button {
+    margin-top: auto;
+    margin-bottom: 40px;
+    text-align:center;
+  }
+  & > *:not(button) {
+    width: 80%;
+    align-self:center;
+  }
+
+  @include ab.respond-to("medium") {
+
+  }
+}
+

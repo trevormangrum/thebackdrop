@@ -1,0 +1,10 @@
+@use 'abstracts' as ab;
+.iframe {
+  width: 300px;
+  height: 300px;
+  align-self: center;
+  @include ab.respond-to("medium") {
+    width: 600px;
+    height: 600px;
+  }
+}
