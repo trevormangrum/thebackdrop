@@ -68,6 +68,10 @@ export const createAppointment = async (
  * Retrieves all sets of hour pairs during opening hours on a given business day.
  * @param day The day to retrieve business hours on.
  * @returns An array of strings that represent hour pairs (ex: 2:00PM-3:00PM)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9a9c0e2b2129b29b0f4dae4f22b83b224b901930
  */
 export const getBusinessHoursOnDay = (day: Date): string[] => {
   let hours;
