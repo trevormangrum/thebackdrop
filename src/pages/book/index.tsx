@@ -6,6 +6,7 @@ import useDate from "utils/useDate";
 import { IDate, BookableHour } from "utils/types";
 import BookableHourComponent from "src/components/BookableHour";
 import BookableHourViewer from "src/components/BookableHourViewer";
+import Head from "next/head";
 export default function BookingPage() {
   const [date, getDate] = React.useState<IDate>();
   const [displayHourInfo, setDisplayHourInfo] = React.useState(false);
@@ -19,8 +20,8 @@ export default function BookingPage() {
   };
   //Make it so you can't scroll if the popup is enabled.
   React.useEffect(() => {
-    if(popupHour && popupHour.bookable != undefined) {
-      window.scroll(0,0);
+    if (popupHour && popupHour.bookable != undefined) {
+      window.scroll(0, 0);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "overlay";
@@ -28,9 +29,20 @@ export default function BookingPage() {
   }, [popupHour]);
   return (
     <Layout hero={true} heroText="Book">
+      <Head>
+        <title>Book an Appointment | The Backdrop</title>
+        <meta
+          name="description"
+          content="Book an hour for up to 10 people at The Backdrop, for $25.00/hr per person."
+        />
+      </Head>
       <div className="layout-wrapper booking">
         {data && !isLoading && (
-          <BookableHourViewer popupHour={popupHour} setPopupHour={setPopupHour} date={date} />
+          <BookableHourViewer
+            popupHour={popupHour}
+            setPopupHour={setPopupHour}
+            date={date}
+          />
         )}
         <p>
           Please select a day from the calendar below. Below the calendar you
@@ -47,7 +59,12 @@ export default function BookingPage() {
           !isLoading &&
           !error &&
           data.payload.map((bookableHour: BookableHour) => {
-          return <BookableHourComponent bookableHour={bookableHour} setPopupHour={setPopupHour} />;
+            return (
+              <BookableHourComponent
+                bookableHour={bookableHour}
+                setPopupHour={setPopupHour}
+              />
+            );
           })}
       </div>
     </Layout>

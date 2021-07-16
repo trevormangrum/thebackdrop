@@ -1,8 +1,16 @@
 import Layout from "src/components/Layout";
+import Head from "next/head";
 
 export default function PrivacyPolicyPage() {
   return (
     <Layout hero={true} heroText={"Privacy Policy"}>
+      <Head>
+        <title>Our Privacy Policy | The Backdrop</title>
+        <meta
+          name="description"
+          content="Here you can view The Backdrop's privacy policy, which contains information regarding what data we collect, how it is used, and what you can do regarding your data."
+        />
+      </Head>
       <div className="layout-wrapper">
         <p>
           The following is the The Backdrop, LLC privacy policy. "The Backdrop,"

@@ -1,10 +1,17 @@
 import { NextPage } from "next";
 import React from "react";
 import Layout from "src/components/Layout";
-
+import Head from "next/head";
 const ContactPage: NextPage = () => {
   return (
     <Layout hero={true} heroText="Contact Us">
+      <Head>
+        <title>Contact Us | The Backdrop</title>
+        <meta
+          name="description"
+          content="View our contact information at The Backdrop."
+        />
+      </Head>
       <section className="layout-wrapper">
         <div className="home-content">
           <div>
