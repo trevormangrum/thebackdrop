@@ -116,6 +116,7 @@
   & > *:not(button) {
     width: 80%;
     align-self: center;
+
   }
 
   @include ab.respond-to("medium") {
