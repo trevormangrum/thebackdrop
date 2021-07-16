@@ -6,6 +6,7 @@ import queries from "server/actions/Contentful/queries";
 import { client } from "server/actions/Contentful";
 import { GalleryPhoto, GalleryPhotoQueryResponse } from "utils/types";
 import GalleryPhotoViewer from "src/components/GalleryPhotoViewer";
+import Head from "next/head";
 const GalleryPage: NextPage = () => {
   const [page, setPage] = React.useState(0);
   const [mainGalleryPhoto, setMainGalleryPhoto] = React.useState(
@@ -37,7 +38,7 @@ const GalleryPage: NextPage = () => {
 
   React.useEffect(() => {
     if (mainGalleryPhoto && mainGalleryPhoto.photo != undefined) {
-      window.scroll(0,0);
+      window.scroll(0, 0);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "overlay";
@@ -45,6 +46,13 @@ const GalleryPage: NextPage = () => {
   }, [mainGalleryPhoto]);
   return (
     <Layout hero={true} heroText="Gallery">
+      <Head>
+        <title>Our Gallery | The Backdrop</title>
+        <meta
+          name="description"
+          content="View creative photos from our customers in our gallery."
+        />
+      </Head>
       <section className="layout-wrapper">
         {data && !loading && (
           <>

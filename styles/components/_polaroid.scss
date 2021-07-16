@@ -14,11 +14,12 @@
         margin-top: 10px;
         width: 80%;
         height: 80%;
+        object-fit: contain;
         @include ab.respond-to("medium") {
             margin-top: 20px;
             height: 80%;
         }
-        background: #e3e3e3;
+        background: white;
     }
 }
 .tilt-right {

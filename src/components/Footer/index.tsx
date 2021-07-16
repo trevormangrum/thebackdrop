@@ -8,15 +8,14 @@ const Footer: React.FC = () => {
       <section className="footer-wrapper">
         <div className="footer-section">
           <h3>The Backdrop.</h3>
-          <a href="">Pricing</a>
-          <a href="">Gallery</a>
-          <a href="">Book</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/book">Book</a>
         </div>
         <div className="footer-section">
           <h3>About.</h3>
-          <a href="#">About Us</a>
-          <a href="#">Contact Us</a>
-          <a href="#">Privacy Policy</a>
+          <a href="/about">About Us</a>
+          <a href="/contact">Contact Us</a>
+          <a href="/privacy">Privacy Policy</a>
         </div>
         <div className="footer-section">
           <h3>Hours.</h3>

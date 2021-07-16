@@ -1,9 +1,17 @@
 import React from "react";
 import { NextPage } from "next";
 import Layout from "src/components/Layout";
+import Head from "next/head";
 const FAQPage: NextPage = () => {
   return (
     <Layout hero={true} heroText="Frequently Asked Questions">
+      <Head>
+        <title>Frequently Asked Questions | The Backdrop</title>
+        <meta
+          name="description"
+          content="View frequently asked questions about The Backdrop's creative spaces and tickets."
+        />
+      </Head>
       <section className="layout-wrapper">
         <h3>How do I get tickets?</h3>
         <p>Tickets can be purchased online subject to availability.</p>
