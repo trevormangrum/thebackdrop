@@ -58,7 +58,6 @@ export const getTotalPeopleInHours = async (
 export const createAppointment = async (
   appointment: Appointment
 ): Promise<AppointmentDocument> => {
-  console.log(appointment);
   await mongoDB();
   const createdApp = await AppointmentSchema.create(appointment);
   console.log("appointment created");
@@ -68,14 +67,6 @@ export const createAppointment = async (
  * Retrieves all sets of hour pairs during opening hours on a given business day.
  * @param day The day to retrieve business hours on.
  * @returns An array of strings that represent hour pairs (ex: 2:00PM-3:00PM)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 9a9c0e2b2129b29b0f4dae4f22b83b224b901930
-=======
-
->>>>>>> 0d6a5dbcbae9a354a68b56bcf65946be068724a8
  */
 export const getBusinessHoursOnDay = (day: Date): string[] => {
   let hours;
@@ -117,17 +108,9 @@ export const deleteAppointmentByID = async (id: string) => {
  * Updates an appointment's payment status after the checkout has been completed.
  * @param id The id of the appointment to be updated.
  */
-<<<<<<< HEAD
 export const updateAppointmentPaymentById = async (
   id: string
 ): Promise<void> => {
-=======
-
-export const updateAppointmentPaymentById = async (
-  id: string
-): Promise<void> => {
-
->>>>>>> 0d6a5dbcbae9a354a68b56bcf65946be068724a8
   await mongoDB();
   const oldAppointment = { _id: id };
   await AppointmentSchema.findOneAndUpdate(
@@ -145,7 +128,6 @@ export const updateAppointmentPaymentById = async (
 export const getAppointmentsByDate = async (date: Date) => {
   await mongoDB();
   const appointments = await AppointmentSchema.find({ day: date });
-  console.log(appointments);
   return appointments;
 };
 
@@ -164,10 +146,6 @@ export const cleanUpAppointments = async () => {
     });
   }
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> 0d6a5dbcbae9a354a68b56bcf65946be068724a8
 //From the MUSE: https://github.com/hack4impact-utk/muse-website/blob/develop/utils/helpers/hours.ts
 /**
  * Parses the hours from a string of hours.
