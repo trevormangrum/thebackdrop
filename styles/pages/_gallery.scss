@@ -85,6 +85,8 @@
   @include ab.flex-row;
   min-height: 60px;
   justify-content: flex-end;
+  width: 80%;
+  align-self: center;
   & > button {
     margin: 20px 0;
     background: none;
@@ -104,20 +106,18 @@
   background: white;
   border-radius: 10px;
   box-shadow: 0px 0px 3px #e3e3e3;
-  align-self:center;
+  align-self: center;
   height: 500px;
   & > button {
     margin-top: auto;
     margin-bottom: 40px;
-    text-align:center;
+    text-align: center;
   }
   & > *:not(button) {
     width: 80%;
-    align-self:center;
+    align-self: center;
   }
 
   @include ab.respond-to("medium") {
-
   }
 }
-

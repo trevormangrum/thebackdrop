@@ -15,7 +15,7 @@ const HomePage: NextPage = () => {
             <p>The Backdrop is a creative space where you can take the perfect selfie. We offer several photo spaces that are filled with professional ring lighting to perfect your images.</p>
             <Button text="About Us" href='/about' />
           </div>
-          <Polaroid imageAltText="A test" imageUrl="#" tiltDirection="right"/>
+          <Polaroid imageAltText="A test" imageUrl="/example3.jpeg" tiltDirection="right"/>
         </div>
         <div className="home-content reverse">
           <div>
@@ -23,7 +23,7 @@ const HomePage: NextPage = () => {
             <p>View some of the creative photos that our clients have made in our photo spaces.</p>
             <Button text="Gallery" href='/gallery' />
           </div>
-          <Polaroid imageAltText="A test" imageUrl="#" tiltDirection="left"/>
+          <Polaroid imageAltText="A test" imageUrl=" /example1.jpeg" tiltDirection="left"/>
         </div>
       </section>
     </Layout>
