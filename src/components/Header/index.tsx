@@ -21,7 +21,10 @@ const Header: React.FC = () => {
           <a href="/contact">Contact</a>
           <a href="/faq">FAQs</a>
           <a href="/gallery">Gallery</a>
-          <Button href="/book" text="Book" />
+          <Button
+            href="/book"
+            text="Book"
+          />
         </nav>
         <div className="nav-button" onClick={() => setMobileOpen(!mobileOpen)}>
           <div></div>

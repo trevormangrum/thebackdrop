@@ -21,7 +21,7 @@ h6 {
   letter-spacing: 2.5px;
 }
 p,
-span {
+span, label {
   letter-spacing: 1.5px;
   @include abstracts.font-body;
   @include abstracts.text-light;
@@ -32,4 +32,14 @@ a {
   @include abstracts.font-body;
   @include abstracts.text-primary;
   text-decoration: none;
+}
+
+.error {
+  background:#ff8c8c;
+  color: #b52b2b;
+  border-radius: 10px;
+  border: 1px solid #b52b2b; 
+  padding: 0.5rem 0.25rem;
+  font-size: 14px;
+  margin: 20px 0;
 }

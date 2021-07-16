@@ -35,7 +35,14 @@ const GalleryPage: NextPage = () => {
     if (tmp.length > 0) entries.push(tmp);
   }
 
-  console.log(mainGalleryPhoto);
+  React.useEffect(() => {
+    if (mainGalleryPhoto && mainGalleryPhoto.photo != undefined) {
+      window.scroll(0,0);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "overlay";
+    }
+  }, [mainGalleryPhoto]);
   return (
     <Layout hero={true} heroText="Gallery">
       <section className="layout-wrapper">
