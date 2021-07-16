@@ -1,0 +1,24 @@
+@use 'abstracts' as ab;
+.login-form {
+    @include ab.flex-column;
+    width: 350px;
+    min-height: 350px;
+    align-self:center;
+    border-top: 3px solid map-get(ab.$colors, "primary");
+    border-left: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    margin: 20px;
+    & > label:first-child {
+        margin-top: 20px;
+    }
+    & > label, input {
+        margin: 10px;
+    }
+    & > h3 {
+        text-align: center;
+    }
+    & > .error {
+        margin: 10px;
+    }
+}

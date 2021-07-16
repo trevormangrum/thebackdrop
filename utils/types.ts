@@ -32,3 +32,8 @@ export interface BookableHour {
   remainingGroupSize: number;
   bookable: boolean;
 }
+
+export interface User {
+  username: string;
+  password: string;
+}
