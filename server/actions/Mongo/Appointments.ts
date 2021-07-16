@@ -4,18 +4,23 @@ import mongoDB from "server/actions/Mongo";
 import AppointmentSchema from "server/models/Appointment";
 import { AppointmentDocument } from "server/models/Appointment";
 
-export const getBookableHoursOnDay = async (day: Date): Promise<BookableHour[]> => {
+export const getBookableHoursOnDay = async (
+  day: Date
+): Promise<BookableHour[]> => {
   const hourPairs = getBusinessHoursOnDay(day);
-  if (hourPairs == ["Closed"]) return [{hourPair:"Closed", remainingGroupSize: 10, bookable: false}];
+  if (hourPairs == ["Closed"])
+    return [{ hourPair: "Closed", remainingGroupSize: 10, bookable: false }];
 
-  return await Promise.all(hourPairs.map(async hourPair => {
-    let totalPeople = await getTotalPeopleInHours(day, hourPair);
-    return {
-      hourPair: hourPair,
-      remainingGroupSize: 10 - totalPeople,
-      bookable: totalPeople < 10 && hourPair != "Closed" ? true : false,
-    }
-  }));
+  return await Promise.all(
+    hourPairs.map(async (hourPair) => {
+      let totalPeople = await getTotalPeopleInHours(day, hourPair);
+      return {
+        hourPair: hourPair,
+        remainingGroupSize: 10 - totalPeople,
+        bookable: totalPeople < 10 && hourPair != "Closed" ? true : false,
+      };
+    })
+  );
 };
 /**
  * Gets the total number of people booked for a given day and hour pair. Can be used to verify whether or not an appointment is actually available.
@@ -50,7 +55,9 @@ export const getTotalPeopleInHours = async (
  * @param appointment The appointment information to be used in creation.
  * @returns an Appointment object from MongoDB.
  */
-export const createAppointment = async (appointment: Appointment): Promise<AppointmentDocument> => {
+export const createAppointment = async (
+  appointment: Appointment
+): Promise<AppointmentDocument> => {
   console.log(appointment);
   await mongoDB();
   const createdApp = await AppointmentSchema.create(appointment);
@@ -60,7 +67,7 @@ export const createAppointment = async (appointment: Appointment): Promise<Appoi
 /**
  * Retrieves all sets of hour pairs during opening hours on a given business day.
  * @param day The day to retrieve business hours on.
- * @returns An array of strings that represent hour pairs (ex: 2:00PM-3:00PM) 
+ * @returns An array of strings that represent hour pairs (ex: 2:00PM-3:00PM)
  */
 export const getBusinessHoursOnDay = (day: Date): string[] => {
   let hours;
@@ -96,25 +103,51 @@ export const getBusinessHoursOnDay = (day: Date): string[] => {
 export const deleteAppointmentByID = async (id: string) => {
   await mongoDB();
   await AppointmentSchema.findByIdAndDelete(id);
-  console.log("Appointment successfully deleted.")
+  console.log("Appointment successfully deleted.");
 };
 /**
  * Updates an appointment's payment status after the checkout has been completed.
  * @param id The id of the appointment to be updated.
  */
-export const updateAppointmentPaymentById = async (id: string):Promise<void> => {
+export const updateAppointmentPaymentById = async (
+  id: string
+): Promise<void> => {
   await mongoDB();
-  const oldAppointment = {_id: id};
-  await AppointmentSchema.findOneAndUpdate(oldAppointment, {paid: true}, {upsert: false});
-  console.log("Appointment successfully updated.")
+  const oldAppointment = { _id: id };
+  await AppointmentSchema.findOneAndUpdate(
+    oldAppointment,
+    { paid: true },
+    { upsert: false }
+  );
+  console.log("Appointment successfully updated.");
 };
-
+/**
+ * Gets appointments by date.
+ * @param date The date to retrieve appointments from
+ * @returns An array of appointments.
+ */
 export const getAppointmentsByDate = async (date: Date) => {
   await mongoDB();
-  const appointments = await AppointmentSchema.find({day: date});
+  const appointments = await AppointmentSchema.find({ day: date });
   console.log(appointments);
   return appointments;
-}
+};
+
+export const cleanUpAppointments = async () => {
+  await mongoDB();
+  const today = new Date();
+  const todaysAppointments = await AppointmentSchema.find({ day: today });
+  if (todaysAppointments.length > 0) {
+    todaysAppointments.forEach(async (appointment) => {
+      if (
+        today.valueOf() - appointment.timeBooked!.valueOf() >= 10 * 60 * 1000 &&
+        appointment.paid === false
+      ) {
+        await AppointmentSchema.findOneAndDelete({ _id: appointment._id });
+      }
+    });
+  }
+};
 //From the MUSE: https://github.com/hack4impact-utk/muse-website/blob/develop/utils/helpers/hours.ts
 /**
  * Parses the hours from a string of hours.
