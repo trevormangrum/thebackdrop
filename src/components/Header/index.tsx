@@ -1,15 +1,18 @@
 import React from "react";
 import Button from "src/components/Button";
 import useHasScrolledDown from "utils/scrolledDown";
+import {useRouter} from "next/router";
 
 const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const hasScrolledDown = useHasScrolledDown();
+  const router = useRouter();
   return (
+    <>
     <header className={`navigation ${hasScrolledDown ? "with-bg" : ""}`}>
       <div className="nav-wrapper">
         <a href="/" className="logo">
-          The Backdrop
+          <img src='logo.png' alt="The Backdrop Logo" />
         </a>
         <nav
           className={`navigation-links ${
@@ -33,6 +36,10 @@ const Header: React.FC = () => {
         </div>
       </div>
     </header>
+      {router.pathname != '/' && (
+        <div className="spacer"></div>
+      )}
+    </>
   );
 };
 

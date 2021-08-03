@@ -21,6 +21,7 @@
   @include ab.respond-to("medium") {
     min-height: 1200px;
     background-size: 100% 1200px;
+    background-repeat: no-repeat;
   }
 }
 

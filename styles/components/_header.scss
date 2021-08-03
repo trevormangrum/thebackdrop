@@ -24,9 +24,15 @@
   @include ab.flex-row;
   width: 80%;
   align-self: center;
+  align-items:center;
   padding: 20px;
 }
 .logo {
+  & > img {
+    height: 100px;
+    width: 180px;
+    object-fit: cover;
+    }
   @include ab.font-logo;
   @include ab.text-dark;
   font-size: 2rem;
@@ -111,4 +117,10 @@
 }
 .mobile-hidden {
   right: -100%;
+}
+
+.spacer {
+width: 100%;
+display:block;
+height: 40px;
 }
