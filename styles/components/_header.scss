@@ -28,14 +28,16 @@
   padding: 20px;
 }
 .logo {
+  @include ab.flex-row;
   & > img {
     height: 100px;
-    width: 180px;
-    object-fit: cover;
+    width: 200px;
+    margin: 0;
+    object-fit: contain;
+    align-self: flex-start;
     }
   @include ab.font-logo;
   @include ab.text-dark;
-  font-size: 2rem;
   align-self: center;
   letter-spacing: 0;
   transition: 0.3s ease;
