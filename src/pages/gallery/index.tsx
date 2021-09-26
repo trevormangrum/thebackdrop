@@ -19,7 +19,6 @@ const GalleryPage: NextPage = () => {
       client: client,
     }
   );
-  console.log(error);
 
   //Set up the gallery page to be paginated
   let entries: GalleryPhoto[][] = [];
