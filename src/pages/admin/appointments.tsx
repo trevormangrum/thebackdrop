@@ -23,7 +23,7 @@ export default function AdminAppointmentPage() {
     return (
         <Layout hero={true} heroText="Admin Appointment Management">
           <div className="layout-wrapper">
-            <p>Below you will find a mini calendar displaying the current date, and all PAID appointments for that day. Use the calendar below to view appointments on different days. You can click an appointment's "DELETE" button to clear that button from the list. Refunds will have to be handled through Stripe, so cancelling an appointment here doesn't cancel its payment. However, it will free up a slot for someone else to book. The list will refresh automatically after an appointment is deleted.</p>
+            <p>Below you will find a mini calendar displaying the current date, and all PAID appointments for that day. Use the calendar below to view appointments on different days. You can click an appointment's "DELETE" button to clear that appointment from the list. Refunds will have to be handled through Stripe, so cancelling an appointment here doesn't cancel its payment. However, it will free up a slot for someone else to book. The list will refresh automatically after an appointment is deleted.</p>
             <div className="date-selector-container">
               <Calendar onChange={handleChange} />
             </div>

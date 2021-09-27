@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { deleteAppointmentByID, getAppointmentsByDate } from "server/actions/Mongo/Appointments";
+import { deleteAppointmentByID, getPaidAppointmentsByDate } from "server/actions/Mongo/Appointments";
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse) {
     try {
         if(req.method === "GET") {
             //Get all appointments on a given date.
             const date = new Date(<string>req.query.date);
-            const appointments = await getAppointmentsByDate(date);
+            const appointments = await getPaidAppointmentsByDate(date);
             res.status(200).json({
                 payload: appointments,
             })

@@ -131,6 +131,12 @@ export const getAppointmentsByDate = async (date: Date) => {
   return appointments;
 };
 
+export const getPaidAppointmentsByDate = async (date: Date) => {
+  await mongoDB();
+  const appointments = await AppointmentSchema.find({ day: date, paid:true });
+  return appointments;
+};
+
 export const cleanUpAppointments = async () => {
   await mongoDB();
   const today = new Date();
