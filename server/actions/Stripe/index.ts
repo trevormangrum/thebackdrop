@@ -8,6 +8,7 @@ const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
 
 
 export const generateStripeCheckout = async (appointment: AppointmentDocument):Promise<string> => {
+    console.log("Generating checkout...\n");
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [{

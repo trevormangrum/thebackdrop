@@ -8,6 +8,7 @@ import urls from "utils/urls"
 const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
   apiVersion: "2020-08-27",
 });
+console.log("In payment\n");
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -33,7 +34,6 @@ export default async function handler(
       return;
     }
   } catch (error) {
-    console.log("something went wrong");
     console.error(error);
     res.status(500).redirect(`${urls.baseUrl}`);
   }
