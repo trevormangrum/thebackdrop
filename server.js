@@ -17,6 +17,7 @@ app.prepare().then(() => {
       origin: [
         "https://thebackdrop731.com",
         "https://thebackdrop.herokuapp.com",
+        "https://checkout.stripe.com",
       ],
       credentials: true,
     })
