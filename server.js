@@ -15,9 +15,8 @@ app.prepare().then(() => {
   server.use(
     cors({
       origin: [
-        "https://thebackdrop731.com",
+        "https://www.thebackdrop731.com",
         "https://thebackdrop.herokuapp.com",
-        "https://checkout.stripe.com",
       ],
       credentials: true,
     })
