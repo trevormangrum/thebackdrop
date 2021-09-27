@@ -1,6 +1,7 @@
 import { redirect } from "next/dist/next-server/server/api-utils";
 import { Stripe } from "stripe";
 import { AppointmentDocument } from "server/models/Appointment";
+import urls from "utils/urls";
 const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
     apiVersion: '2020-08-27',
     typescript: true,
@@ -21,8 +22,8 @@ export const generateStripeCheckout = async (appointment: AppointmentDocument):P
             quantity: appointment.groupSize, //Quanity == number of people going
         }],
         mode: "payment",
-        success_url: `http://localhost:3000/api/checkout/payment?session_id={CHECKOUT_SESSION_ID}&app_id=${appointment._id}`,
-        cancel_url: `http://localhost:3000/api/checkout/payment?session_id={CHECKOUT_SESSION_ID}&app_id=${appointment._id}`,
+        success_url: `${urls.baseUrl}${urls.api.checkout.payment}?session_id={CHECKOUT_SESSION_ID}&app_id=${appointment._id}`,
+        cancel_url: `${urls.baseUrl}${urls.api.checkout.payment}?session_id={CHECKOUT_SESSION_ID}&app_id=${appointment._id}`,
     });
     return session.url as string;
 }
