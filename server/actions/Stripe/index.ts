@@ -1,4 +1,3 @@
-import { redirect } from "next/dist/next-server/server/api-utils";
 import { Stripe } from "stripe";
 import { AppointmentDocument } from "server/models/Appointment";
 import urls from "utils/urls";
