@@ -8,7 +8,6 @@ const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
 
 
 export const generateStripeCheckout = async (appointment: AppointmentDocument):Promise<string> => {
-    console.log("Generating checkout...\n");
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [{
@@ -19,11 +18,11 @@ export const generateStripeCheckout = async (appointment: AppointmentDocument):P
                 },
                 unit_amount: 2500, //$25.00 per person
             },
-            quantity: appointment.groupSize, //Quanity == number of people going
+            quantity: appointment.groupSize, //Quantity == number of people going
         }],
         mode: "payment",
-        success_url: `${urls.baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&app_id=${appointment._id}`,
-        cancel_url: `${urls.baseUrl}/cancel?session_id={CHECKOUT_SESSION_ID}&app_id=${appointment._id}`,
+        success_url: `${urls.baseUrl}${urls.api.checkout.payment}?session_id={CHECKOUT_SESSION_ID}&app_id=${appointment._id}`,
+        cancel_url: `${urls.baseUrl}${urls.api.checkout.payment}?session_id={CHECKOUT_SESSION_ID}&app_id=${appointment._id}`,
     });
     return session.url as string;
 }
