@@ -4,6 +4,7 @@ import {
   updateAppointmentPaymentById,
 } from "server/actions/Mongo/Appointments";
 import Stripe from "stripe";
+import urls from "utils/urls"
 const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
   apiVersion: "2020-08-27",
 });
@@ -19,7 +20,7 @@ export default async function handler(
       //Update the Appointment to have paid status.
       updateAppointmentPaymentById(req.query.app_id as string);
       //Appointment has been updated, so now we redirect.
-      res.redirect("http://localhost:3000/success");
+      res.redirect(`${urls.baseUrl}/success`);
       return;
     } else {
       //!  May have to add another "Else if " if an error occurs.
@@ -27,11 +28,11 @@ export default async function handler(
       console.log("Appointment cancelled.");
       //Delete the appointment.
       await deleteAppointmentByID(req.query.app_id as string);
-      res.redirect("http://localhost:3000/cancel");
+      res.redirect(`${urls.baseUrl}/cancel`);
       return;
     }
   } catch (error) {
     console.error(error);
-    res.status(500).redirect("http://localhost:3000");
+    res.status(500).redirect(`${urls.baseUrl}`);
   }
 }
