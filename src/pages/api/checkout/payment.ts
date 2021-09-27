@@ -8,7 +8,6 @@ import urls from "utils/urls"
 const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
   apiVersion: "2020-08-27",
 });
-console.log("In payment\n");
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -17,7 +16,6 @@ export default async function handler(
     const session = await stripe.checkout.sessions.retrieve(
       req.query.session_id as string
     );
-    console.log(session);
     if (session.payment_status === "paid") {
       //Update the Appointment to have paid status.
       updateAppointmentPaymentById(req.query.app_id as string);
@@ -35,6 +33,6 @@ export default async function handler(
     }
   } catch (error) {
     console.error(error);
-    res.status(500).redirect(`${urls.baseUrl}`);
+    res.status(500).redirect(`${urls.baseUrl}/gallery`);
   }
 }
