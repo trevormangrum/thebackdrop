@@ -16,6 +16,7 @@ export default async function handler(
     const session = await stripe.checkout.sessions.retrieve(
       req.query.session_id as string
     );
+    console.log(session);
     if (session.payment_status === "paid") {
       //Update the Appointment to have paid status.
       updateAppointmentPaymentById(req.query.app_id as string);
@@ -32,7 +33,7 @@ export default async function handler(
       return;
     }
   } catch (error) {
-    console.log(error);
+    console.log("something went wrong");
     console.error(error);
     res.status(500).redirect(`${urls.baseUrl}`);
   }
