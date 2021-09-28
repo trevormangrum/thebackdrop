@@ -10,6 +10,7 @@ export default async function handler(
     try {
         if (req.method === "POST") {
             const appInfo = JSON.parse(req.body) as Appointment;
+            console.log(appInfo);
             //Since we didn't set these fields before the fetch request, they need to be set now.
             appInfo.paid = false; //Appointments are booked before payment to prevent appointment overlap.
             appInfo.timeBooked = new Date();

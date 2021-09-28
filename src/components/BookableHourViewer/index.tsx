@@ -51,7 +51,7 @@ const BookableHourViewer: React.FC<Props> = ({
         const target = e.target as HTMLInputElement;
         setValues((values) => ({ ...values, [target.name]: target.value }));
         if(!values.day || !values.time) {
-            setValues((values) => ({...values, ["day"]: date}));
+            setValues((values) => ({...values, ["day"]: date && date instanceof Date && (date as Date).toLocaleString("en-US", {day: "numeric", month: "numeric", year:"numeric"}) }));
             setValues((values) => ({...values, ["time"]: popupHour.hourPair}));
         }
     };

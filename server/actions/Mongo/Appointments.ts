@@ -5,9 +5,9 @@ import AppointmentSchema from "server/models/Appointment";
 import { AppointmentDocument } from "server/models/Appointment";
 
 export const getBookableHoursOnDay = async (
-  day: Date
+  day:string 
 ): Promise<BookableHour[]> => {
-  const hourPairs = getBusinessHoursOnDay(day);
+  const hourPairs = getBusinessHoursOnDay(new Date(day));
   if (hourPairs == ["Closed"])
     return [{ hourPair: "Closed", remainingGroupSize: 10, bookable: false }];
 
@@ -29,7 +29,7 @@ export const getBookableHoursOnDay = async (
  * @returns The total number of people that have booked in a given hour pair and day.
  */
 export const getTotalPeopleInHours = async (
-  day: Date,
+  day: string,
   hourPair: string
 ): Promise<number> => {
   await mongoDB();
@@ -129,13 +129,13 @@ export const updateAppointmentPaymentById = async (
  * @param date The date to retrieve appointments from
  * @returns An array of appointments.
  */
-export const getAppointmentsByDate = async (date: Date) => {
+export const getAppointmentsByDate = async (date:string) => {
   await mongoDB();
   const appointments = await AppointmentSchema.find({ day: date });
   return appointments;
 };
 
-export const getPaidAppointmentsByDate = async (date: Date) => {
+export const getPaidAppointmentsByDate = async (date: string) => {
   await mongoDB();
   const appointments = await AppointmentSchema.find({ day: date, paid:true });
   console.log("Paid appointments returned: ", appointments);
@@ -145,7 +145,7 @@ export const getPaidAppointmentsByDate = async (date: Date) => {
 export const cleanUpAppointments = async () => {
   await mongoDB();
   const today = new Date();
-  const todaysAppointments = await AppointmentSchema.find({ day: today });
+  const todaysAppointments = await AppointmentSchema.find({ day: today.toLocaleString("en-US", {day: "numeric", month:"numeric", year:"numeric"}) });
   if (todaysAppointments.length > 0) {
     todaysAppointments.forEach(async (appointment) => {
       if (

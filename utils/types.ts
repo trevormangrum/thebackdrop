@@ -20,7 +20,7 @@ export interface IDate {
 
 export interface Appointment {
   phone?: string;
-  day?: Date;
+  day?: string;
   time?: string;
   groupSize?: number;
   timeBooked?: Date;
