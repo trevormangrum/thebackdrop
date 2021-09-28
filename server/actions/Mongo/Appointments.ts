@@ -33,10 +33,14 @@ export const getTotalPeopleInHours = async (
   hourPair: string
 ): Promise<number> => {
   await mongoDB();
+  console.log("TPIH Day: ", day);
+  console.log("TPIH Hour Pair: ", hourPair);
   const appointments = await AppointmentSchema.find({
     day: day,
     time: hourPair,
+    paid: true,
   });
+  console.log("totalPeopleInHours appointments: ", appointments);
   if (appointments.length > 0) {
     //go through every appointment and get the group size.
     const totalPeople = appointments.reduce(
