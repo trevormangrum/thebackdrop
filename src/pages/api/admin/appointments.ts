@@ -5,7 +5,9 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
     try {
         if(req.method === "GET") {
             //Get all appointments on a given date.
+            console.log("In admin appointments");
             const date = new Date(<string>req.query.date);
+            console.log("Date: ", date);
             const appointments = await getPaidAppointmentsByDate(date);
             res.status(200).json({
                 payload: appointments,
