@@ -13,7 +13,7 @@ export default function AdminAppointmentPage() {
   const today = () =>  {const date = new Date(); return new Date(date.setHours(12))};
   const [dateToView, setDateToView] = React.useState(new Date(today().toLocaleString("en-US", {day: "numeric", month: "numeric", year: "numeric"})));
   const fetcher = (url:string) => fetch(url).then(r => r.json());
-  const {data, error, mutate} = useSWR(`/api/admin/appointments?date=${dateToView}`, fetcher, {
+  const {data, error, mutate} = useSWR(`/api/admin/appointments?date=${dateToView.toLocaleString("en-US", {day: "numeric", month: "numeric", year:"numeric"})}`, fetcher, {
     refreshInterval: 1000,
   });
   const handleChange = (value: Date, e: React.SyntheticEvent) => {
