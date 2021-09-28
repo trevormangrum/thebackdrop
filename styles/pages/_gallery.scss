@@ -96,7 +96,6 @@
     @include ab.text-primary;
     font-size: 24px;
     @include ab.font-body;
-    cursor: pointer;
   }
 }
 
@@ -113,6 +112,12 @@
     margin-top: auto;
     margin-bottom: 40px;
     text-align: center;
+    &:hover {
+        cursor: pointer;
+    }
+    &[disabled] {
+        cursor: not-allowed;
+    }
   }
   & > *:not(button) {
     width: 80%;

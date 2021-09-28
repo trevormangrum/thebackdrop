@@ -4,9 +4,10 @@ interface Props {
     text: string;
     href?: string;
     onClick?: unknown;
+    isDisabled?: boolean;
 }
 
-const Button: React.FC<Props> = ({ text, href, onClick }) => {
+const Button: React.FC<Props> = ({ text, href, onClick, isDisabled }) => {
     return (
         <>
             {href && !onClick && (
@@ -20,6 +21,7 @@ const Button: React.FC<Props> = ({ text, href, onClick }) => {
                     type="button"
                     className="button"
                     onClick={onClick ? onClick : () => {}}
+                    disabled={isDisabled ? true : false}
                 >
                     {text}
                 </button>

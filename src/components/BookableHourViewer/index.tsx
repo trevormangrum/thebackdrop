@@ -16,8 +16,10 @@ const BookableHourViewer: React.FC<Props> = ({
     //Sends a request to get the checkout link from the API.
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
+        setIsSubmitting(true);
         if (!values.phone || !values.groupSize) {
             displayError(true);
+            setIsSubmitting(false);
             return;
         } else {
             //Set the appointment date and time.
@@ -56,6 +58,7 @@ const BookableHourViewer: React.FC<Props> = ({
         }
     };
     const [values, setValues] = React.useState({});
+    const[submitting, setIsSubmitting] = React.useState(false);
     const [error, displayError] = React.useState(false);
     return (
         <div
@@ -92,7 +95,7 @@ const BookableHourViewer: React.FC<Props> = ({
                         populateOptions()}
                 </select>
                 { error && <p className="error">You must fill out the fields above to proceed to checkout.</p>}
-                <Button onClick={handleSubmit} text="Proceed to Checkout" />
+                <Button onClick={handleSubmit} text="Proceed to Checkout" isDisabled={submitting} />
             </div>
         </div>
     );
