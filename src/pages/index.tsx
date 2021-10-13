@@ -50,7 +50,7 @@ const HomePage: NextPage = () => {
           </div>
           <Polaroid
             imageAltText="A test"
-            imageUrl=" /example1.jpeg"
+            imageUrl=" /gallery.jpeg"
             tiltDirection="left"
           />
         </div>
