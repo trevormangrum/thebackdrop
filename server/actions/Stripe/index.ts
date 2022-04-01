@@ -16,7 +16,7 @@ export const generateStripeCheckout = async (appointment: AppointmentDocument):P
                 product_data: {
                     name: "The Backdrop Appointment",
                 },
-                unit_amount: 2500, //$25.00 per person
+                unit_amount: 1500, //$15.00 per person
             },
             quantity: appointment.groupSize, //Quantity == number of people going
         }],
