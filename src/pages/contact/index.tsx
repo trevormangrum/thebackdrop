@@ -17,7 +17,7 @@ const ContactPage: NextPage = () => {
           <div>
             <h2>Our Contact Information</h2>
             <p>
-              Phone: <a href="tel:7314347149">731.434.7149</a>
+              Phone: <a href="tel:7314340446">731.434.0446</a>
             </p>
             <p>
               Email:{" "}

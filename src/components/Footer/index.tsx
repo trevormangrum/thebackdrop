@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
           <h3>Contact.</h3>
           <address>
             <span>102 B West Court Avenue, Selmer TN, 38375</span>
-            <a href="tel:7314347149">731.434.7149</a>
+            <a href="tel:7314340446">731.434.0446</a>
             <a href="mailto:thebackdrop731@gmail.com">
               thebackdrop731@gmail.com
             </a>
